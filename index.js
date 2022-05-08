@@ -38,6 +38,9 @@ run().catch(console.dir());
 app.get("/", (req, res) => {
   res.send("warehouse management system");
 });
+app.get("/hero", (req, res) => {
+  res.send("hero");
+});
 
 app.listen(port, () => {
   console.log(`Warehose management system running on ${port}`);
