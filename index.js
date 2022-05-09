@@ -28,7 +28,13 @@ async function run() {
     const productCollection = client.db("warehouse").collection("products");
 
     //my
-
+    app.get("/products/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { email: email };
+      const cursor = productCollection.find(query);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
 
     //add item
     app.post("/product/additem", async (req, res) => {
