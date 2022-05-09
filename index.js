@@ -27,6 +27,18 @@ async function run() {
     await client.connect();
     const productCollection = client.db("warehouse").collection("products");
 
+    //my
+
+
+    //add item
+    app.post("/product/additem", async (req, res) => {
+      const newItem = req.body;
+      console.log(newItem);
+      const result = await productCollection.insertOne(newItem);
+      console.log(result);
+      res.send({ result: result });
+    });
+
     //add stock
     app.post("/product/addToStock", async (req, res) => {
       console.log("query", req.query);
